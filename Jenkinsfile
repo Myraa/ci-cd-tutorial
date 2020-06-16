@@ -19,6 +19,7 @@ node {
 
     stage('checkout source') {
         checkout scm
+        sh "echo 'username ${SF_USERNAME}'"
     }
 
 
