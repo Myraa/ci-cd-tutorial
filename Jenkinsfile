@@ -11,6 +11,7 @@ node {
     def PACKAGE_NAME='0Ho4S000000fxbFSAQ'
     def PACKAGE_VERSION='0.1.0.NEXT'
     def SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://login.salesforce.com"
+    def jqtool = tool 'jq'
 
 
     // -------------------------------------------------------------------------
@@ -22,8 +23,10 @@ node {
     }
 
     stage('print package.xml'){
-        tool name: 'jq', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
-        jq -r '.version' package.json
+
+        sh("\$jqtool -r '.version' package.json")
+        def pv = command "$jqtool -r '.version' package.json"
+        sh("ech0 $pv")
 
     }
 
