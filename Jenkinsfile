@@ -23,7 +23,7 @@ node {
     }
 
     stage('print package.xml'){
-        def pv = command "cat package.json | \$jqtool '.[] | {version}'"
+        def pv = command "cat package.json | $jqtool '.[] | {version}'"
         sh("ech0 $pv")
 
     }
