@@ -21,6 +21,12 @@ node {
         checkout scm
     }
 
+    stage('print package.xml'){
+        tool name: 'jq', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
+        jq -r '.version' package.json
+
+    }
+
 
     // -------------------------------------------------------------------------
     // Run all the enclosed stages with access to the Salesforce
