@@ -22,8 +22,15 @@ node {
         checkout scm
     }
 
+    stage('env') {
+        sh '''
+        echo id
+        echo whoami
+        echo pwd
+        '''
+    }
     stage('print package.xml'){
-        def pv = command "sudo cat package.json | $jqtool '.[] | {version}'"
+        def pv = command "sudo cat package.json | $jqtool -r '.[] | {version}'"
         sh("echo $pv")
 
     }
