@@ -24,9 +24,9 @@ node {
 
     stage('env') {
         sh '''
-        echo id
-        echo whoami
-        echo pwd
+        id
+        whoami
+        pwd
         '''
     }
     stage('print package.xml'){
