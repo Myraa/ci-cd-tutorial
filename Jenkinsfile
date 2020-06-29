@@ -30,7 +30,7 @@ node {
         '''
     }
     stage('print package.xml'){
-        def pv = command "sudo cat package.json | $jqtool -r '.[] | {version}'"
+        def pv = command "sudo cat package.json | jq -r '.[] | {version}'"
         sh("echo $pv")
 
     }
