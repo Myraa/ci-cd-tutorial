@@ -32,6 +32,7 @@ node {
     stage('print package.xml'){
         def pv = command "sudo cat package.json | jq -r '.[] | {version}'"
         sh("echo $pv")
+        def jsonSlurper = new JsonSlurperClassic()
 
     }
 
